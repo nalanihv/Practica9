@@ -10,51 +10,28 @@ namespace Employee
 {
     public class Employ{
 
+
         //atributos de la clase
         int fixedSalary;
         DateTime workingFrom;
 
-        /* public Employ(int fixedSalary, DateTime workingFrom)
+        //atributo de tipo Department para acceder a los atributos y metodos de esa clase
+        //aqui es cuando se hace uso de la relacion de agregacion (HAS-A)
+        Depto incentive = null;
+
+        //constructor que recibe parámetros 
+        public Employ(int fixedSalary, DateTime workingFrom,Depto incentive)
          {
              this.fixedSalary = fixedSalary;
              this.workingFrom = workingFrom;
-         }*/
-
-        //objeto de la clase department para poder calcular el incentive
-        Depto incentive = new Depto(1,true,234);
+             this.incentive = incentive;
+         }
 
 
 
-
-
-
-
-
-        public Depto[] employDepto = { Depto.};
-
-        public Employ(int fixedSalary, DateTime workingFrom, Depto[] deptos) {
-
-            this.fixedSalary = fixedSalary;
-            this.workingFrom = workingFrom;
-            this.employDepto = deptos;
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // ------------  METODOS QUE CALCULAN LA PRESTACION  -------------------------//
+        // -----------------  METODOS QUE CALCULAN LA PRESTACION  -------------------------//
 
         // calcula el complemento salarial basándose en el número de años trabajados
-
 
 
         //si se tiene fecha de corte
@@ -89,25 +66,21 @@ namespace Employee
         double GetAllowance() {
 
         // se llama al metodo allowance que recibe parámetros para asignar el aumento que se dará respecto al salario
-
-        //  double  Salary = GetAllowance(new DateTime(2014, 3, 31));  
              return GetAllowance(new DateTime(2014, 3, 31));
-            
         }
 
 
-        // ------------  METODOS QUE CALCULAN EL SALARIO TOTAL  -------------------------//
+        // ---------------------  METODOS QUE CALCULAN EL SALARIO TOTAL  ---------------------------//
 
         //dependiendo de si recibe fecha de corte, será el metodo que use para sumar todos los valores
         //calculados anteriormente para sacar el salario total 
 
-
         //se calcula sumando el salario inicial con la prestación (calculada dependiente de los años
-        //que se lleva trabajando y el incentivo 
+        //que se lleva trabajando) y el incentivo 
 
 
         public double GetTotalSalary(DateTime cutOffDate, float multiplyfactor) {
-            
+          
             return fixedSalary + GetAllowance(cutOffDate)+incentive.GetIncentive(multiplyfactor);
         }
 
@@ -119,3 +92,17 @@ namespace Employee
 
     }
 }
+/*
+
+
+
+      public Depto[] employDepto ;
+
+      public Employ(int fixedSalary, DateTime workingFrom, Depto[] deptos) {
+
+          this.fixedSalary = fixedSalary;
+          this.workingFrom = workingFrom;
+          this.employDepto = deptos;
+      }
+
+      */

@@ -11,22 +11,28 @@ namespace Main
     internal class Program    {
         static void Main(string[] args){
 
-           Employ empleado= new Employ(1500, new DateTime(2011, 5, 1), new Department.Depto[] {Depto.deptNumber.set() });
-            empleado.GetTotalSalary(new DateTime(2022,1,30),2);
+            //se crean objetos y se le agregan los valores corresponientes 
+            //de sus clases
+           Depto departamento= new Depto(1,true,250);
 
-          /*
-            DateTime cutOffDate= new DateTime(2014, 3, 31);
-            DateTime workingFrom = new DateTime(2010, 5,30);
-          
-            int workExperience = ((cutOffDate - workingFrom ).Days) / 365;
-
-            Console.WriteLine(workExperience);*/
+           Employ empleado1= new Employ(2000, new DateTime(2011, 5, 1),departamento);
+            Employ empleado2 = new Employ(2000, new DateTime(2000, 11, 30), departamento);
 
 
+            Console.WriteLine("__SALARIO TOTAl__");
+
+            Console.WriteLine("Empleado con fecha de corte: "+ empleado1.GetTotalSalary(new DateTime(2022,1,30),1.85f));
+            Console.WriteLine("Empleado con fecha de corte sin asignar: " +empleado2.GetTotalSalary( .2f));
 
 
+            /*  
+                DateTime cutOffDate= new DateTime(2022, 1, 30);
+                DateTime workingFrom = new DateTime(2011, 5,1);
 
+                int workExperience = ((cutOffDate - workingFrom ).Days) / 365;
 
+                Console.WriteLine(workExperience);
+            */
 
         }
     }
